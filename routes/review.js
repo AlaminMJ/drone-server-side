@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
 
 // add a review
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const newReview = new Review({
     name: req.body.name,
     email: req.body.email,
@@ -20,7 +21,7 @@ router.post("/", async (req, res) => {
     rating: req.body.rating,
   });
   try {
-    const result = newReview.save();
+    const result = await newReview.save();
     res.status(201).json(result);
   } catch {
     res.status(500).json({ message: "server error" });

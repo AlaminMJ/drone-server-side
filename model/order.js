@@ -5,8 +5,10 @@ const OrderSchema = new mongoose.Schema({
   name: { type: String, required: true },
   number: { type: String, required: true },
   address: { type: String, required: true },
-  amount: { type: number, required: true },
+  amount: { type: Number, required: true },
+  quantity: { type: Number, default: 1 },
+  product: { type: Object, required: true },
   status: { type: String, default: "pending" },
 });
 
-module.exports = mongoose.model("Product", OrderSchema);
+module.exports = mongoose.model("Order", OrderSchema);

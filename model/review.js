@@ -4,9 +4,9 @@ const ReviewSchema = new mongoose.Schema(
   {
     name: { type: String },
     img: { type: String },
-    email: { type: String, required: true },
-    massage: { type: String, required: false },
-    rating: { type: Number, defult: 1 },
+    email: { type: String },
+    massage: { type: String },
+    rating: { type: Number, defult: 0 },
   },
   {
     timestamps: true,

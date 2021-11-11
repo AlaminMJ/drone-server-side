@@ -28,7 +28,8 @@ router.get("/home", async (req, res) => {
   }
 });
 // add a product
-router.post("/home", async (req, res) => {
+router.post("/", async (req, res) => {
+  console.log(req.body);
   const newProduct = new Product({
     name: req.body.name,
     img: req.body.img,
