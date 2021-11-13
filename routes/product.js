@@ -24,7 +24,7 @@ router.get("/home", async (req, res) => {
     const result = await Product.find({}).limit(6);
     res.status(200).json(result);
   } catch {
-    res.status(500).json({ message: "server err" });
+    res.status(500).json({ message: "server error" });
   }
 });
 // add a product
