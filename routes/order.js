@@ -25,6 +25,14 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "server error" });
   }
 });
+router.get("/myorder/:email", async (req, res) => {
+  try {
+    const result = await Order.find({ email: req.params.email });
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: "server error" });
+  }
+});
 router.delete("/:id", async (req, res) => {
   try {
     const result = await Order.findByIdAndDelete(req.params.id);
