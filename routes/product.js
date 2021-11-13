@@ -6,27 +6,26 @@ router.get("/:id", async (req, res) => {
     const result = await Product.findById(req.params.id);
     res.status(200).json(result);
   } catch {
-    res.status(500).json({ message: "server err" });
+    res.status(500).json({ message: "server error" });
   }
 });
 // get all products
 router.get("/", async (req, res) => {
+  const query = req.query?.count;
   try {
-    const result = await Product.find({});
+    let result = [];
+    if (!query) {
+      result = await Product.find({});
+    } else {
+      result = await Product.find({}).limit(query);
+    }
+
     res.status(200).json(result);
   } catch {
     res.status(500).json({ message: "server err" });
   }
 });
-// get 6 product for home page
-router.get("/home", async (req, res) => {
-  try {
-    const result = await Product.find({}).limit(6);
-    res.status(200).json(result);
-  } catch {
-    res.status(500).json({ message: "server error" });
-  }
-});
+
 // add a product
 router.post("/", async (req, res) => {
   console.log(req.body);
@@ -46,7 +45,8 @@ router.post("/", async (req, res) => {
   }
 });
 // Delete a product
-router.delete("/id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
+  console.log("delete requst");
   try {
     const result = await Product.findByIdAndDelete(req.params.id);
     console.log(result);

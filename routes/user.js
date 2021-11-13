@@ -22,12 +22,13 @@ router.post("/", async (req, res) => {
 // make admin
 router.put("/makeadmin", async (req, res) => {
   const email = req.body.email;
-  console.log("make admin ");
+
   try {
     const result = await User.updateOne(
       { email: email },
       { $set: { isAdmin: true } }
     );
+
     res.status(201).json(result);
   } catch (err) {
     res.status(500).json(err);
