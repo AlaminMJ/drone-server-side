@@ -25,5 +25,23 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "server error" });
   }
 });
+router.delete("/:id", async (req, res) => {
+  try {
+    const result = await Order.findByIdAndDelete(req.params.id);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: "server error" });
+  }
+});
+router.put("/:id", async (req, res) => {
+  try {
+    const result = await Order.findByIdAndUpdate(req.params.id, {
+      $set: { status: "shoped" },
+    });
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: "server error" });
+  }
+});
 
 module.exports = router;

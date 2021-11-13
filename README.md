@@ -1,4 +1,4 @@
-![Logo](https://travelerwp.com/wp-content/themes/traveler-childtheme-landing/landing_new/img/logo.svg)
+![Logo](https://ld-wt73.template-help.com/tf/airy/images/logo-default-293x72.png)
 
 # AIRY DRONE
 
