@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     if (!query) {
       result = await Product.find({});
     } else {
-      result = await Product.find({}).limit(query);
+      result = await Product.find({}).limit(6);
     }
 
     res.status(200).json(result);
