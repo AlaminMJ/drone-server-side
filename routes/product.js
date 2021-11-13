@@ -35,9 +35,11 @@ router.post("/", async (req, res) => {
     img: req.body.img,
     title: req.body.title,
     price: req.body.price,
+    desc: req.body.desc,
   });
   try {
     const result = await newProduct.save();
+    console.log(result);
     res.status(200).json(result);
   } catch {
     res.status(500).json({ message: "server err" });
@@ -46,7 +48,8 @@ router.post("/", async (req, res) => {
 // Delete a product
 router.delete("/id", async (req, res) => {
   try {
-    const result = Product.findByIdAndDelete(req.params.id);
+    const result = await Product.findByIdAndDelete(req.params.id);
+    console.log(result);
     res.status(200).json(result);
   } catch {
     res.status(500).json({ message: "server err" });

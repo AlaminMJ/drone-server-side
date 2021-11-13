@@ -12,7 +12,6 @@ router.get("/", async (req, res) => {
 
 // add a review
 router.post("/", async (req, res) => {
-  console.log(req.body);
   const newReview = new Review({
     name: req.body.name,
     email: req.body.email,

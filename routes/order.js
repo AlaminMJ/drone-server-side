@@ -1,14 +1,13 @@
 const router = require("express").Router();
 const Order = require("../model/order");
 router.post("/", async (req, res) => {
-  const { email, name, number, address, amount, quantity, product } = req.body;
+  const { email, name, number, address, quantity, product } = req.body;
   const NewOrder = new Order({
     email,
     name,
     number,
     address,
     quantity,
-    amount,
     product,
   });
   try {
@@ -17,6 +16,9 @@ router.post("/", async (req, res) => {
   } catch {
     res.status(500).json({ message: "server error" });
   }
+});
+router.get("/", async (req, res) => {
+  res.json({ message: "Ok vai order" });
 });
 
 module.exports = router;

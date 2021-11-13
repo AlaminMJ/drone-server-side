@@ -5,7 +5,7 @@ const ReviewSchema = new mongoose.Schema(
     name: { type: String },
     img: { type: String },
     email: { type: String },
-    massage: { type: String },
+    message: { type: String },
     rating: { type: Number, defult: 0 },
   },
   {
