@@ -18,7 +18,12 @@ router.post("/", async (req, res) => {
   }
 });
 router.get("/", async (req, res) => {
-  res.json({ message: "Ok vai order" });
+  try {
+    const result = await Order.find({});
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: "server error" });
+  }
 });
 
 module.exports = router;
